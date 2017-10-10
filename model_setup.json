@@ -1,0 +1,45 @@
+{
+
+  "regression": {
+    "random-forest": {
+      "n-estimators": 50,
+      "n-jobs": -1
+    },
+    "boosted-trees": {
+      "max-depth": 10
+    },
+    "mlp": {
+      "hidden-layers": "(100, 50, 20, 5)",
+      "activation-function": "relu",
+      "max-iter": 1000
+    }
+  },
+
+
+  "classification": {
+
+    "random-forest": {
+      "n-estimators": 50,
+      "n-jobs": -1
+    },
+
+    "gradient-boosting": {
+      "loss": "deviance",
+      "n-estimators": 150,
+      "max-depth": 10
+    },
+
+    "multilayer-perceptron": {
+      "hidden-layers": "(100, 100, 100, 100, 100)",
+      "activation-function": "relu",
+      "max-iter": 1000
+    },
+
+    "logistic-regression": {
+      "penalty": "l2",
+      "max_iter": 1000,
+      "n_jobs": -1
+    }
+
+  }
+}
