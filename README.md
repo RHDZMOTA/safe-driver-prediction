@@ -6,22 +6,22 @@
 
 ## Usage
 
-1. Create a `.env` file.
-    * `cp conf/.env.example conf/.env`
+1. Create a ```.env``` file.
+    * ```cp conf/.env.example conf/.env```
 2. Create virtual environment and install dependencies. 
-    * `virtualenv venv`
-    * `source activate venv`
-    * `pip install -r requirements.txt`
+    * ```virtualenv venv```
+    * ```source activate venv```
+    * ```pip install -r requirements.txt```
 3. Project boostrap.
-    * `python setup.py`
+    * ```python setup.py```
 4. Run as following:
-    * `python main.py --model rf --type classification`
+    * ```python main.py --model rf --type classification```
 
 Parameters to run in console (default value in **bold**):
-* `--model` : {**rf**, gb, mlp, lr} _machine learning model_  
-* `--type`  : {**classification**, regression} _type of model_
-* `--roc`   : {train, test, validate, **none**} _plot roc on data_
-* `--submit`: {true, **false**} _create a submit file at data/submit_
+* ```--model``` : {**rf**, gb, mlp, lr} _machine learning model_  
+* ```--type```  : {**classification**, regression} _type of model_
+* ```--roc```   : {train, test, validate, **none**} _plot roc on data_
+* ```--submit```: {true, **false**} _create a submit file at data/submit_
 
 
 Model description (classification):
@@ -36,9 +36,9 @@ Model description (classification):
 
 ## Model Parameters
 
-Model parameters can be changed by editing the file: `model_setup.json`.
+Model parameters can be changed by editing the file: ```model_setup.json```.
 
-The `main.py` script will read this file as a python dictionary and
+The ```main.py``` script will read this file as a python dictionary and
 apply this configuration to the selected model. 
 
 The file is structured as following: 
@@ -116,7 +116,7 @@ Possible values for classification algorithms:
 
 [ add content ]
 
-See file `data-exploration.ipynb` for a more detailed analysis.
+See file ```data-exploration.ipynb``` for a more detailed analysis.
 
 ## TODO
 
