@@ -10,7 +10,7 @@ from sklearn.neural_network import MLPClassifier
 from sklearn.linear_model import LogisticRegression
 from util.classification import classifier_procedure
 from util.data_preparation import get_dataset, DataSets
-from sklearn.ensemble import  RandomForestRegressor, GradientBoostingRegressor
+from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
 
 
@@ -26,6 +26,9 @@ def random_forest_regression(reg_conf, datasets):
 def random_forest_classification(class_conf, datasets, submission):
     model = RandomForestClassifier(
         n_estimators=class_conf["n-estimators"],
+        max_depth=class_conf["max-depth"],
+        min_samples_split=class_conf["min-samples-split"],
+        max_features=class_conf["max-features"],
         n_jobs=class_conf["n-jobs"]
     )
     res = classifier_procedure(model, datasets, submission)
@@ -43,10 +46,12 @@ def mlp_classification(class_conf, datasets, submission):
 
 
 def gradient_boosting_classification(class_conf, datasets, submission):
-    model = RandomForestClassifier(
-        #loss=class_conf["loss"],
+    model = GradientBoostingClassifier(
         n_estimators=class_conf["n-estimators"],
-        max_depth=class_conf["max-depth"]
+        learning_rate=class_conf["learning-rate"],
+        max_depth=class_conf["max-depth"],
+        min_samples_split=class_conf["min-samples-split"],
+        max_features=class_conf["max-features"]
     )
     res = classifier_procedure(model, datasets, submission)
     return res
@@ -76,9 +81,6 @@ model_map = {
 }
 
 
-
-
-
 def main():
     parser = OptionParser()
     parser.add_option("--type", type="string", default="classification", help="Select model.")
@@ -88,10 +90,6 @@ def main():
     kwargs, _ = parser.parse_args(args=None, values=None)
 
     # Data
-    #data, submit = get_data()
-    #submit_index = submit.index
-    #datasets = DataSets(data,
-    #                    predictive_var="target")
     print("Reading data...")
     datasets, submit = get_dataset()
     submit_index = submit.index
@@ -112,7 +110,7 @@ def main():
         submit_results = res.get_submission_predictions(proba=True)
         submission_dataset = pd.DataFrame({
             "id": submit_index,
-            "target": submit_results #[i[-1] for i in submit_results]
+            "target": submit_results
         })
         submission_filename = settings.DataFilesConf.FileNames.submission_file.format(
             time=dt.datetime.now().strftime("%Y%m%d-%H%M%S"),

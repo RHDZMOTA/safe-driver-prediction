@@ -19,14 +19,19 @@
   "classification": {
 
     "random-forest": {
-      "n-estimators": 50,
+      "n-estimators": 150,
+      "max-depth": 10,
+      "min-samples-split": 0.1,
+      "max-features": "sqrt",
       "n-jobs": -1
     },
 
     "gradient-boosting": {
-      "loss": "deviance",
+      "learning-rate": 0.1,
       "n-estimators": 150,
-      "max-depth": 10
+      "max-depth": 12,
+      "min-samples-split": 0.1,
+      "max-features": "sqrt"
     },
 
     "multilayer-perceptron": {
