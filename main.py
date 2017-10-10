@@ -92,19 +92,23 @@ def main():
     #submit_index = submit.index
     #datasets = DataSets(data,
     #                    predictive_var="target")
+    print("Reading data...")
     datasets, submit = get_dataset()
     submit_index = submit.index
 
     # Model
+    print("Model procedure...")
     model_type = "regression" if "reg" in kwargs.type else "classification"
     model_conf = settings.ModelConf.get_parameters(model_type, model_map[model_type][kwargs.model].get("key"))
     res = model_map[model_type][kwargs.model].get("function")(model_conf, datasets, submit)
 
     # Logger
+    print("Extracting results...\n\n")
     logg_result(res, model_conf, model_map[model_type][kwargs.model].get("key"))
 
     # Submission
     if "true" in kwargs.submit.lower():
+        print("Generating submission file...")
         submit_results = res.get_submission_predictions(proba=True)
         submission_dataset = pd.DataFrame({
             "id": submit_index,
@@ -118,8 +122,10 @@ def main():
         submission_dataset.to_csv(submission_filename, index=False)
 
     if not "none" in kwargs.roc.lower():
+        print("Plotting...")
         res.plot_roc_curve(kwargs.roc.lower(), proba=True)
 
+    print("Done.")
 
 if __name__ == "__main__":
     main()
