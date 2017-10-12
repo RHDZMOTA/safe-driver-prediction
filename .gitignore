@@ -169,6 +169,6 @@ appengine-generated/
 */.cvsignore
 
 test/
-#*.json
+*.json
 data/
 logs/
