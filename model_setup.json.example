@@ -27,10 +27,10 @@
     },
 
     "gradient-boosting": {
-      "learning-rate": 0.1,
-      "n-estimators": 150,
-      "max-depth": 12,
-      "min-samples-split": 0.1,
+      "learning-rate": 0.01,
+      "n-estimators": 175,
+      "max-depth": 15,
+      "min-samples-split": 0.30,
       "max-features": "sqrt"
     },
 
