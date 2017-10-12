@@ -6,8 +6,9 @@
 
 ## Usage
 
-1. Create a ```.env``` file.
+1. Create a ```.env``` file and the ```model_setup.json``` file.
     * ```cp conf/.env.example conf/.env```
+    * ```cp model_setup.json.example model_setup.json```
 2. Create virtual environment and install dependencies. 
     * ```virtualenv venv```
     * ```source activate venv```
