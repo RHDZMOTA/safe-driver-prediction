@@ -19,25 +19,43 @@
   "classification": {
 
     "random-forest": {
-      "n-estimators": 150,
-      "max-depth": 10,
-      "min-samples-split": 0.1,
-      "max-features": "sqrt",
-      "n-jobs": -1
+      "criterion": "gini",
+      "n-estimators": 10,
+      "max-depth": None,
+      "min-samples-split": 2,
+      "max-features": "auto",
+      "n-jobs": 1
     },
 
     "gradient-boosting": {
-      "learning-rate": 0.01,
-      "n-estimators": 175,
-      "max-depth": 15,
-      "min-samples-split": 0.30,
-      "max-features": "sqrt"
+      "loss": "deviance"
+      "learning-rate": 0.1,
+      "n-estimators": 100,
+      "max-depth": 3,
+      "min-samples-split": 2,
+      "max-features": None
+    },
+
+    "xg-boost": {
+      "base-score": 0.5,
+      "colsample-bylevel": 1,
+      "colsample-bytree": 1,
+      "gamma": 0,
+      "learning-rate": 0.1,
+      "max-delta-step": 0,
+      "max-depth": 3,
+      "objective": "binary:logistic",
+      "reg-alpha": 0,
+      "reg-lambda": 1,
+      "scale-pos-weight": 1,
+      "seed": 0,
+      "subsample": 1
     },
 
     "multilayer-perceptron": {
-      "hidden-layers": "(100, 100, 100, 100, 100)",
+      "hidden-layers": "(100)",
       "activation-function": "relu",
-      "max-iter": 1000
+      "max-iter": 200
     },
 
     "logistic-regression": {
